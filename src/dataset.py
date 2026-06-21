@@ -63,17 +63,11 @@ class IAMDataset(Dataset):
 
 
 def load_iam_splits():
-    """Load IAM dataset from HuggingFace. Returns train, val, test splits."""
+    """Load IAM word-level dataset from HuggingFace. Returns train, val, test splits."""
     from datasets import load_dataset
 
-    ds = load_dataset("Teklia/IAM-line", trust_remote_code=True)
-
-    if "validation" in ds:
-        return ds["train"], ds["validation"], ds["test"]
-
-    # If no validation split, carve 10% from train
-    train_val = ds["train"].train_test_split(test_size=0.1, seed=42)
-    return train_val["train"], train_val["test"], ds["test"]
+    ds = load_dataset("priyank-m/IAM_words_text_recognition")
+    return ds["train"], ds["val"], ds["test"]
 
 
 def collate_fn(batch, label_encoder=None):
