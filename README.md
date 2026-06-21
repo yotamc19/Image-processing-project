@@ -24,28 +24,41 @@ Deep learning OCR system for recognizing children's handwriting, built as a univ
 
 The dataset downloads automatically from HuggingFace — no manual download needed.
 
-## How the Pipeline Works
+## How the Pipeline Works (Milestone 1 Notebook)
 
-### 1. Load Dataset
-Downloads thousands of images of handwritten text (IAM dataset) from HuggingFace. Each image is a photo of a word paired with what that word actually says. This is what the model learns from.
+Each step matches a section in `notebooks/milestone1_baseline.ipynb`:
 
-### 2. Explore Data
-Examine the dataset before using it: how many samples, word length distribution, which characters appear most often.
+### Step 1 — Setup
+Clones the project repo into Colab and installs dependencies. Like copying your project folder onto Colab's computer.
 
-### 3. Preprocessing
-Clean up images before feeding them to the model:
+### Step 2 — Load Dataset
+Downloads thousands of images of handwritten text (IAM dataset) from HuggingFace automatically. Each image is a photo of a handwritten line paired with what it actually says. This is what the model learns from.
+
+### Step 3 — Dataset Exploration
+Look at the data before using it: how many samples, word length distribution, which characters appear most often. Includes histograms and charts.
+
+### Step 4 — Sample Images
+Display 20 random handwriting images with their labels so you can see what the data looks like.
+
+### Step 5 — Preprocessing Demo
+Clean up images before feeding them to the model, shown side-by-side (before vs after):
 - **Binarization** — convert to pure black and white (remove gray areas)
 - **Denoising** — remove tiny dots and specs
 - **Resize & normalize** — make all images the same size (the model needs fixed dimensions)
 
-### 4. Build Model
-Create the CRNN neural network — the "brain" that will learn to read handwriting. Architecture: CNN extracts visual features → BiLSTM reads them as a sequence → CTC loss handles variable-length output.
+### Step 6 — Build Model
+Create the CRNN neural network — the "brain" that will learn to read handwriting. It hasn't learned anything yet, just the empty architecture. Prints the model structure and parameter count.
 
-### 5. Train
-Show the model thousands of handwriting images with their correct labels, over and over (50 rounds/epochs). Each round it gets slightly better at reading. Takes ~1-2 hours on a Colab GPU.
+Architecture: CNN extracts visual features → BiLSTM reads them as a sequence → CTC loss handles variable-length output.
 
-### 6. Evaluate
-Measure how well the model learned using **CER** (Character Error Rate) — the percentage of characters it gets wrong. Lower is better. Show sample predictions (what it thinks vs what it actually says) and analyze the worst mistakes to understand where it fails.
+### Step 7 — Train
+The main event. Show the model thousands of handwriting images and tell it what each one says, over and over (up to 50 rounds/epochs). Each round it gets slightly better at reading. Training stops early if the model stops improving. Takes ~30-90 min on Colab GPU.
+
+### Step 8 — Results & Predictions
+Load the best model checkpoint, plot training curves (loss and CER over epochs), and show 15 sample predictions comparing what the model thinks vs ground truth.
+
+### Step 9 — Error Analysis
+Find the model's 20 worst mistakes and show overall statistics. Understanding where it fails tells you what to improve in milestone 2.
 
 ## Milestones
 
