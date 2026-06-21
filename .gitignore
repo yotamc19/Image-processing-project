@@ -1,0 +1,11 @@
+data/
+!data/.gitkeep
+checkpoints/
+!checkpoints/.gitkeep
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+*.pt
+*.pth
+wandb/
+.DS_Store

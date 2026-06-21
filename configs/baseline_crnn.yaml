@@ -1,0 +1,23 @@
+data:
+  img_height: 32
+  img_width: 128
+  batch_size: 64
+  num_workers: 2
+
+model:
+  cnn_out_channels: 512
+  rnn_hidden: 256
+  rnn_layers: 2
+  dropout: 0.3
+
+training:
+  epochs: 50
+  lr: 0.001
+  lr_scheduler: "step"
+  step_size: 15
+  gamma: 0.1
+  clip_grad: 5.0
+  early_stop_patience: 10
+
+eval:
+  beam_width: 1
