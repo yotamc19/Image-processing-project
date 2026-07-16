@@ -126,6 +126,14 @@ def get_dataloaders(config, label_encoder=None):
 
     train_hf, val_hf, test_hf = load_iam_splits()
 
+    max_train = config["data"].get("max_train_samples")
+    max_eval = config["data"].get("max_eval_samples")
+    if max_train:
+        train_hf = train_hf.select(range(min(max_train, len(train_hf))))
+    if max_eval:
+        val_hf = val_hf.select(range(min(max_eval, len(val_hf))))
+        test_hf = test_hf.select(range(min(max_eval, len(test_hf))))
+
     train_ds = IAMDataset(train_hf, transform=transform)
     val_ds = IAMDataset(val_hf, transform=transform)
     test_ds = IAMDataset(test_hf, transform=transform)

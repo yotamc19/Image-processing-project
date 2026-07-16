@@ -2,6 +2,10 @@
 
 Deep learning OCR system for recognizing children's handwriting, built as a university image processing project.
 
+**Run Milestone 1 in Colab:** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/yotamc19/Image-processing-project/blob/main/notebooks/milestone1_baseline.ipynb)
+
+Set `QUICK_TEST = True` (cell 2) for a ~2-3 min end-to-end sanity run on a small subset before committing to the full training run.
+
 ## Project Structure
 
 ```
