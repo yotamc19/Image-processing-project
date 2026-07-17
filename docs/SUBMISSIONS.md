@@ -50,12 +50,18 @@ Plan deliverables → repo artifacts (built during M3, listed here for planning)
 
 | Plan deliverable | Submit | Status |
 |------------------|--------|--------|
-| Final clean, documented, runnable inference pipeline | `src/` + an `inference.py` / inference notebook (TBD) | ⬜ M3 |
-| Comprehensive final report (methodology, experiments, results, conclusions) | `reports/final_report.md` (TBD) | ⬜ M3 |
-| Project summary presentation | `reports/presentation.*` (TBD) | ⬜ M3 |
+| Final clean, documented, runnable inference pipeline | `src/inference.py` (+ `src/evaluate.py`, `notebooks/milestone3_final.ipynb`) | ✅ built; run pending |
+| Comprehensive final report (methodology, experiments, results, conclusions) | `reports/final_report.md` | ✅ built; `[FILL IN]` pending M3 run |
+| Project summary presentation | `reports/presentation.md` | ✅ built; `[FILL IN]` pending M3 run |
 
-**M3 additional work from the plan:** final fine-tuning + hyperparameter search,
-and evaluation on the **test set** (not just val) for the final numbers.
+**M3 additional work from the plan (done in the notebook):** fine-tuning from the
+M2 weights at a lower LR (`configs/milestone3_finetune.yaml`), and evaluation on
+the **test set** (`src/evaluate.py`) for the final numbers.
+
+**Before submitting M3:**
+1. Run `notebooks/milestone3_final.ipynb` with `QUICK_TEST = True` (sanity), then `False` (~1.5h).
+2. Paste the M3 val CER/WER and test-set CER/WER → fill `reports/final_report.md` + `reports/presentation.md`.
+3. Submission bundle = inference pipeline code + final report + presentation (+ notebook with outputs).
 
 ---
 

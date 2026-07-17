@@ -13,9 +13,9 @@ locally — local checks are syntax-only; real verification is a Colab run.
 ## Milestones
 | # | Scope | Status |
 |---|-------|--------|
-| 1 | Data, preprocessing, baseline CRNN | code-complete; awaiting full run + report numbers |
-| 2 | Advanced arch (STN-CRNN) + augmentation | code-complete; awaiting full run + report numbers |
-| 3 | Fine-tune, test-set eval, final report + slides | not started |
+| 1 | Data, preprocessing, baseline CRNN | DONE — CER 0.1065 / WER 0.2460 (val); submitted as notebook + report |
+| 2 | Advanced arch (STN-CRNN) + augmentation | DONE — CER 0.0867 / WER 0.2012 (val, −18.6%); notebook + report |
+| 3 | Fine-tune, test-set eval, inference pipeline, report + slides | built; awaiting full run to fill final_report.md + presentation.md |
 
 ## Submission snapshots
 The authoritative checklist is `docs/SUBMISSIONS.md`. When the user asks "what do
@@ -33,6 +33,12 @@ Each milestone is a self-contained bundle; the pattern is always
 - **M2:** adds `STN` front-end (`use_stn` flag, identity-init) → `STN → CNN → BiLSTM → CTC`,
   plus `ChildrenAugmentation` (affine/elastic/baseline-wave, train split only via
   `data.augment`). Reuses `src/train.py` unchanged. `configs/milestone2_stn.yaml`.
+- **M3:** fine-tunes M2 via `init_from` in `src/train.py` (`configs/milestone3_finetune.yaml`,
+  lr 1e-4). Adds `src/evaluate.py` (test-split scoring) and `src/inference.py`
+  (checkpoint→image→text, runnable as `python -m src.inference`). Notebook
+  `notebooks/milestone3_final.ipynb` regenerates the M2 base if absent, fine-tunes,
+  evaluates on test, demos inference. Report `reports/final_report.md` + slides
+  `reports/presentation.md`.
 - Each milestone has a `smoke_test*.yaml` for a 2–3 min `QUICK_TEST=True` sanity run.
 
 ## What I still need from the user (pending)
@@ -40,9 +46,12 @@ These fill the `[FILL IN]` fields in the reports and produce the weights to subm
 
 1. **M1 cell [9] metrics** — paste `Best model from epoch...`, `Best CER`, `Best WER`
    → fills `reports/milestone1.md` best-CER/WER rows and the M2 comparison table baseline.
-2. **M2 full run** — run `notebooks/milestone2_advanced.ipynb` with `QUICK_TEST=False`;
-   paste its final metrics (best CER/WER, mean/median/perfect) → fills `reports/milestone2.md`.
-3. **Weights** — download `checkpoints/best_model.pt` (M1) and `checkpoints_m2/best_model.pt` (M2) from Colab.
+2. **M3 full run** — run `notebooks/milestone3_final.ipynb` with `QUICK_TEST=False`
+   (~1.5h; regenerates M2 base, fine-tunes, evaluates on test). Paste M3 val CER/WER
+   and test-set CER/WER → fills `reports/final_report.md` + `reports/presentation.md`.
+
+M1 and M2 are fully done (submitted as notebook + report; weights not submitted by
+decision). Tags `milestone-1` and `milestone-2` freeze those submission states.
 
 ## Conventions
 - Configs drive everything; don't hardcode. Add a flag + a `smoke_test*` variant for new features.

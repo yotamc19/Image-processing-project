@@ -94,6 +94,16 @@ def train(config_path, checkpoint_dir="checkpoints"):
     total_params = sum(p.numel() for p in model.parameters())
     print(f"Model parameters: {total_params:,}")
 
+    # Milestone 3: optional fine-tuning — initialise from an existing checkpoint
+    # (e.g. the M2 best model) before continuing training at a lower LR.
+    init_from = config["training"].get("init_from")
+    if init_from and os.path.exists(init_from):
+        ckpt = torch.load(init_from, map_location=device, weights_only=False)
+        model.load_state_dict(ckpt["model_state_dict"])
+        print(f"Initialized weights from {init_from} (epoch {ckpt.get('epoch', '?')})")
+    elif init_from:
+        print(f"WARNING: init_from='{init_from}' not found — training from scratch.")
+
     optimizer = torch.optim.Adam(model.parameters(), lr=config["training"]["lr"])
     scheduler = torch.optim.lr_scheduler.StepLR(
         optimizer,
