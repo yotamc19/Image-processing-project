@@ -12,9 +12,9 @@ Plan deliverables → repo artifacts:
 
 | Plan deliverable | Submit | Status |
 |------------------|--------|--------|
-| Jupyter/Colab notebook showing the data pipeline | `notebooks/milestone1_baseline.ipynb` (with outputs) | ✅ done |
-| Trained baseline model | `checkpoints/best_model.pt` (from the full run) | ⬜ export from Colab |
-| Short report: dataset, its distribution, baseline metrics (CER) | `reports/milestone1.md` | ⬜ fill `[FILL IN]` from run |
+| Jupyter/Colab notebook showing the data pipeline | `notebooks/milestone1_baseline.ipynb` | ✅ done (code-only; run outputs captured in the report) |
+| Trained baseline model | `checkpoints/best_model.pt` | ➖ not submitting (notebook + report only, by decision) |
+| Short report: dataset, its distribution, baseline metrics (CER) | `reports/milestone1.md` | ✅ done (CER 0.1065 / WER 0.2460) |
 
 **Before submitting M1:**
 1. Run notebook with `QUICK_TEST = False`, keep the cell outputs.
@@ -32,7 +32,7 @@ Plan deliverables → repo artifacts:
 | Plan deliverable | Submit | Status |
 |------------------|--------|--------|
 | Advanced architecture code | `src/model.py` (STN), `src/augmentation.py` | ✅ done |
-| Updated model weights | `checkpoints_m2/best_model.pt` (from the full run) | ⬜ export from Colab |
+| Updated model weights | `checkpoints_m2/best_model.pt` | ➖ not submitting (notebook + report only, by decision) |
 | Interim report: comparison vs. baseline + error analysis with hard examples | `reports/milestone2.md` + `notebooks/milestone2_advanced.ipynb` (with outputs) | ✅ done (CER 0.0867 / WER 0.2012, −18.6% vs baseline) |
 
 **Before submitting M2:**
