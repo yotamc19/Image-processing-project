@@ -33,7 +33,7 @@ Plan deliverables → repo artifacts:
 |------------------|--------|--------|
 | Advanced architecture code | `src/model.py` (STN), `src/augmentation.py` | ✅ done |
 | Updated model weights | `checkpoints_m2/best_model.pt` (from the full run) | ⬜ export from Colab |
-| Interim report: comparison vs. baseline + error analysis with hard examples | `reports/milestone2.md` + `notebooks/milestone2_advanced.ipynb` (with outputs) | ⬜ fill `[FILL IN]` from run |
+| Interim report: comparison vs. baseline + error analysis with hard examples | `reports/milestone2.md` + `notebooks/milestone2_advanced.ipynb` (with outputs) | ✅ done (CER 0.0867 / WER 0.2012, −18.6% vs baseline) |
 
 **Before submitting M2:**
 1. Run `notebooks/milestone2_advanced.ipynb` with `QUICK_TEST = False`, keep outputs.

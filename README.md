@@ -70,6 +70,6 @@ Find the model's 20 worst mistakes and show overall statistics. Understanding wh
 
 | # | Description | Status |
 |---|-------------|--------|
-| 1 | Data collection, preprocessing, baseline CRNN | Done |
-| 2 | Advanced architecture (STN-CRNN) + data augmentation | In progress |
+| 1 | Data collection, preprocessing, baseline CRNN | Done — CER 0.1065 / WER 0.2460 |
+| 2 | Advanced architecture (STN-CRNN) + data augmentation | Done — CER 0.0867 / WER 0.2012 (−18.6%) |
 | 3 | Final evaluation, fine-tuning, report, presentation | Pending |
