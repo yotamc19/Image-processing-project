@@ -88,6 +88,7 @@ def train(config_path, checkpoint_dir="checkpoints"):
         rnn_hidden=config["model"]["rnn_hidden"],
         rnn_layers=config["model"]["rnn_layers"],
         dropout=config["model"]["dropout"],
+        use_stn=config["model"].get("use_stn", False),
     ).to(device)
 
     total_params = sum(p.numel() for p in model.parameters())

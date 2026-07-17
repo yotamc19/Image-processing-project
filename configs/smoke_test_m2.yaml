@@ -1,0 +1,29 @@
+# Fast end-to-end sanity run for the M2 STN-CRNN + augmentation pipeline.
+# Not a real result: small subset, few epochs. Use to verify M2 wiring in ~2-3 min.
+data:
+  img_height: 32
+  img_width: 128
+  batch_size: 64
+  num_workers: 2
+  max_train_samples: 2000
+  max_eval_samples: 500
+  augment: true
+
+model:
+  cnn_out_channels: 512
+  rnn_hidden: 256
+  rnn_layers: 2
+  dropout: 0.3
+  use_stn: true
+
+training:
+  epochs: 3
+  lr: 0.001
+  lr_scheduler: "step"
+  step_size: 15
+  gamma: 0.1
+  clip_grad: 5.0
+  early_stop_patience: 10
+
+eval:
+  beam_width: 1

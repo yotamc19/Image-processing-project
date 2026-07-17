@@ -115,6 +115,7 @@ def collate_fn(batch, label_encoder=None):
 def get_dataloaders(config, label_encoder=None):
     from functools import partial
     from src.preprocessing import build_preprocessing_pipeline
+    from src.augmentation import build_augmentation
 
     if label_encoder is None:
         label_encoder = LabelEncoder()
@@ -123,6 +124,14 @@ def get_dataloaders(config, label_encoder=None):
         config["data"]["img_height"],
         config["data"]["img_width"],
     )
+
+    # Milestone 2: children's-handwriting augmentation runs before preprocessing
+    # and only on the train split. Falls back to `transform` when disabled.
+    augment = build_augmentation(config)
+    if augment is not None:
+        train_transform = lambda img: transform(augment(img))
+    else:
+        train_transform = transform
 
     train_hf, val_hf, test_hf = load_iam_splits()
 
@@ -134,7 +143,7 @@ def get_dataloaders(config, label_encoder=None):
         val_hf = val_hf.select(range(min(max_eval, len(val_hf))))
         test_hf = test_hf.select(range(min(max_eval, len(test_hf))))
 
-    train_ds = IAMDataset(train_hf, transform=transform)
+    train_ds = IAMDataset(train_hf, transform=train_transform)
     val_ds = IAMDataset(val_hf, transform=transform)
     test_ds = IAMDataset(test_hf, transform=transform)
 

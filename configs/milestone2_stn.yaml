@@ -1,0 +1,28 @@
+# Milestone 2 — STN-CRNN + children's-handwriting augmentation.
+# Same training recipe as configs/baseline_crnn.yaml; only the two M2
+# additions differ (model.use_stn, data.augment) so the comparison is fair.
+data:
+  img_height: 32
+  img_width: 128
+  batch_size: 64
+  num_workers: 2
+  augment: true          # M2: children's-handwriting augmentation (train split only)
+
+model:
+  cnn_out_channels: 512
+  rnn_hidden: 256
+  rnn_layers: 2
+  dropout: 0.3
+  use_stn: true          # M2: Spatial Transformer front-end
+
+training:
+  epochs: 50
+  lr: 0.001
+  lr_scheduler: "step"
+  step_size: 15
+  gamma: 0.1
+  clip_grad: 5.0
+  early_stop_patience: 10
+
+eval:
+  beam_width: 1

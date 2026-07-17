@@ -4,6 +4,8 @@ Deep learning OCR system for recognizing children's handwriting, built as a univ
 
 **Run Milestone 1 in Colab:** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/yotamc19/Image-processing-project/blob/main/notebooks/milestone1_baseline.ipynb)
 
+**Run Milestone 2 in Colab:** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/yotamc19/Image-processing-project/blob/main/notebooks/milestone2_advanced.ipynb)
+
 Set `QUICK_TEST = True` (cell 2) for a ~2-3 min end-to-end sanity run on a small subset before committing to the full training run.
 
 ## Project Structure
@@ -68,6 +70,6 @@ Find the model's 20 worst mistakes and show overall statistics. Understanding wh
 
 | # | Description | Status |
 |---|-------------|--------|
-| 1 | Data collection, preprocessing, baseline CRNN | In progress |
-| 2 | Advanced architecture (TrOCR/Attention) + data augmentation | Pending |
+| 1 | Data collection, preprocessing, baseline CRNN | Done |
+| 2 | Advanced architecture (STN-CRNN) + data augmentation | In progress |
 | 3 | Final evaluation, fine-tuning, report, presentation | Pending |
