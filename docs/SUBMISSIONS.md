@@ -50,9 +50,9 @@ Plan deliverables → repo artifacts (built during M3, listed here for planning)
 
 | Plan deliverable | Submit | Status |
 |------------------|--------|--------|
-| Final clean, documented, runnable inference pipeline | `src/inference.py` (+ `src/evaluate.py`, `notebooks/milestone3_final.ipynb`) | ✅ built; run pending |
-| Comprehensive final report (methodology, experiments, results, conclusions) | `reports/final_report.md` | ✅ built; `[FILL IN]` pending M3 run |
-| Project summary presentation | `reports/presentation.md` | ✅ built; `[FILL IN]` pending M3 run |
+| Final clean, documented, runnable inference pipeline | `src/inference.py` (+ `src/evaluate.py`, `notebooks/milestone3_final.ipynb`) | ✅ done |
+| Comprehensive final report (methodology, experiments, results, conclusions) | `reports/final_report.md` | ✅ done (test CER 0.0969 / WER 0.2215) |
+| Project summary presentation | `reports/presentation.md` | ✅ done |
 
 **M3 additional work from the plan (done in the notebook):** fine-tuning from the
 M2 weights at a lower LR (`configs/milestone3_finetune.yaml`), and evaluation on

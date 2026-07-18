@@ -15,7 +15,7 @@ locally — local checks are syntax-only; real verification is a Colab run.
 |---|-------|--------|
 | 1 | Data, preprocessing, baseline CRNN | DONE — CER 0.1065 / WER 0.2460 (val); submitted as notebook + report |
 | 2 | Advanced arch (STN-CRNN) + augmentation | DONE — CER 0.0867 / WER 0.2012 (val, −18.6%); notebook + report |
-| 3 | Fine-tune, test-set eval, inference pipeline, report + slides | built; awaiting full run to fill final_report.md + presentation.md |
+| 3 | Fine-tune, test-set eval, inference pipeline, report + slides | DONE — final test CER 0.0969 / WER 0.2215 (77.9% perfect); report + slides filled |
 
 ## Submission snapshots
 The authoritative checklist is `docs/SUBMISSIONS.md`. When the user asks "what do
@@ -41,17 +41,15 @@ Each milestone is a self-contained bundle; the pattern is always
   `reports/presentation.md`.
 - Each milestone has a `smoke_test*.yaml` for a 2–3 min `QUICK_TEST=True` sanity run.
 
-## What I still need from the user (pending)
-These fill the `[FILL IN]` fields in the reports and produce the weights to submit:
+## Status
+All three milestones DONE and pushed to `main`. Submitted as notebook + report
+per milestone (weights not submitted, by decision). Final test CER 0.0969.
+Tags `milestone-1`/`milestone-2`/`milestone-3` freeze each submission state.
 
-1. **M1 cell [9] metrics** — paste `Best model from epoch...`, `Best CER`, `Best WER`
-   → fills `reports/milestone1.md` best-CER/WER rows and the M2 comparison table baseline.
-2. **M3 full run** — run `notebooks/milestone3_final.ipynb` with `QUICK_TEST=False`
-   (~1.5h; regenerates M2 base, fine-tunes, evaluates on test). Paste M3 val CER/WER
-   and test-set CER/WER → fills `reports/final_report.md` + `reports/presentation.md`.
-
-M1 and M2 are fully done (submitted as notebook + report; weights not submitted by
-decision). Tags `milestone-1` and `milestone-2` freeze those submission states.
+Final numbers of record:
+- M1 baseline: val CER 0.1065 / WER 0.2460
+- M2 STN-CRNN + aug: val CER 0.0867 / WER 0.2012; test CER 0.0981 / WER 0.2234
+- M3 fine-tuned: val CER 0.0903 / WER 0.2099; **test CER 0.0969 / WER 0.2215, 77.9% perfect**
 
 ## Conventions
 - Configs drive everything; don't hardcode. Add a flag + a `smoke_test*` variant for new features.

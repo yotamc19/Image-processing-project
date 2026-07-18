@@ -74,4 +74,4 @@ Find the model's 20 worst mistakes and show overall statistics. Understanding wh
 |---|-------------|--------|
 | 1 | Data collection, preprocessing, baseline CRNN | Done — CER 0.1065 / WER 0.2460 |
 | 2 | Advanced architecture (STN-CRNN) + data augmentation | Done — CER 0.0867 / WER 0.2012 (−18.6%) |
-| 3 | Fine-tuning, test-set eval, inference pipeline, report + slides | Built — awaiting full run |
+| 3 | Fine-tuning, test-set eval, inference pipeline, report + slides | Done — test CER 0.0969 / WER 0.2215 |

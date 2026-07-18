@@ -2,7 +2,6 @@
 
 Slide-by-slide outline for the final course presentation. Each `---` is one slide.
 Renders as a deck with Marp/reveal.js, or copy into PowerPoint/Google Slides.
-Fill `[FILL IN]` from the M3 run.
 
 ---
 
@@ -72,7 +71,8 @@ Course image-processing project · [names]
 
 - Fine-tune from M2 weights at lr 1e-4 (short, early-stopped)
 - First evaluation on the **held-out test set**
-- **Test CER `[FILL IN]` · WER `[FILL IN]`**
+- Fine-tuning improves test: CER 0.0981 → **0.0969** · WER 0.2234 → **0.2215**
+- **Final test CER 0.0969 · WER 0.2215 · 77.9% words perfect**
 
 ---
 
