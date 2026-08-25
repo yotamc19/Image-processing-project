@@ -98,15 +98,20 @@ def run_with_intermediates(model, image, encoder, device, img_height=32, img_wid
     }
 
 
-def plot_preprocessing(result, figsize_per_panel=4):
-    """Stage 1 — what the raw photo turns into before the network sees it."""
+def plot_preprocessing(result, panel_height=1.7):
+    """Stage 1 — what the raw photo turns into before the network sees it.
+
+    Stacked vertically: the panels are wide strips, so a row of them collides.
+    """
     stages = result["stages"]
-    fig, axes = plt.subplots(1, len(stages), figsize=(figsize_per_panel * len(stages), 3))
+    fig, axes = plt.subplots(
+        len(stages), 1, figsize=(11, panel_height * len(stages))
+    )
     for ax, (title, img) in zip(axes, stages):
         ax.imshow(img, cmap="gray")
-        ax.set_title(title, fontsize=12)
+        ax.set_title(title, fontsize=12, loc="left")
         ax.axis("off")
-    fig.suptitle("Stage 1 — Preprocessing", fontsize=15, y=1.06)
+    fig.suptitle("Stage 1 — Preprocessing", fontsize=15)
     plt.tight_layout()
     plt.show()
 
@@ -114,9 +119,9 @@ def plot_preprocessing(result, figsize_per_panel=4):
 def plot_stn(result):
     """Stage 2 — the model's learned straightening of the word."""
     fig, axes = plt.subplots(2, 1, figsize=(12, 4))
-    axes[0].imshow(result["model_input"], cmap="gray")
+    axes[0].imshow(result["model_input"], cmap="gray", aspect="auto")
     axes[0].set_title("Model input (after preprocessing)", fontsize=12)
-    axes[1].imshow(result["stn_output"], cmap="gray")
+    axes[1].imshow(result["stn_output"], cmap="gray", aspect="auto")
     axes[1].set_title("After the STN — the network's own rectified view", fontsize=12)
     for ax in axes:
         ax.axis("off")
