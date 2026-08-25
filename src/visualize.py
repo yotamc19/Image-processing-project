@@ -125,14 +125,14 @@ def plot_stn(result):
     plt.show()
 
 
-def plot_time_slices(result, label_every=2):
+def plot_time_slices(result, label_every=4):
     """Stage 3 — the width-to-time split: each step reads one vertical strip."""
     img = result["stn_output"]
     num_steps = result["num_steps"]
     px_per_step = result["img_width"] / num_steps
 
     fig, ax = plt.subplots(figsize=(14, 3))
-    ax.imshow(img, cmap="gray", extent=[0, num_steps, img.shape[0], 0])
+    ax.imshow(img, cmap="gray", aspect="auto", extent=[0, num_steps, img.shape[0], 0])
     for step in range(num_steps + 1):
         ax.axvline(step, color="tab:red", linewidth=0.6, alpha=0.7)
     ax.set_xticks(np.arange(0, num_steps, label_every) + 0.5)
@@ -160,7 +160,7 @@ def plot_frame_predictions(result, min_prob=0.02, max_classes=12):
         3, 1, figsize=(15, 8), gridspec_kw={"height_ratios": [1, 1.4, 2.2]}
     )
 
-    axes[0].imshow(img, cmap="gray", extent=[0, num_steps, img.shape[0], 0])
+    axes[0].imshow(img, cmap="gray", aspect="auto", extent=[0, num_steps, img.shape[0], 0])
     axes[0].set_yticks([])
     axes[0].set_xticks([])
     axes[0].set_title("Stage 4 — what each time step reads", fontsize=15)
