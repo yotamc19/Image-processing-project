@@ -8,6 +8,8 @@ Deep learning OCR system for recognizing children's handwriting, built as a univ
 
 **Run Milestone 3 in Colab:** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/yotamc19/Image-processing-project/blob/main/notebooks/milestone3_final.ipynb)
 
+**Demo (how the model reads a word):** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/yotamc19/Image-processing-project/blob/main/notebooks/demo_video.ipynb)
+
 Set `QUICK_TEST = True` (cell 2) for a ~2-3 min end-to-end sanity run on a small subset before committing to the full training run.
 
 ## Project Structure
@@ -67,6 +69,19 @@ Load the best model checkpoint, plot training curves (loss and CER over epochs),
 
 ### Step 9 — Error Analysis
 Find the model's 20 worst mistakes and show overall statistics. Understanding where it fails tells you what to improve in milestone 2.
+
+## Demo: watching the model read
+
+`notebooks/demo_video.ipynb` transcribes one word image and shows every stage on
+the way — preprocessing, the STN's straightened view, the 32 time steps the CNN
+splits the width into, the character each step predicts, and the CTC collapse
+that turns that frame string into a word. Built for the recorded demo; the
+figures come from `src/visualize.py`, which exposes the intermediates that
+`src/inference.py` normally discards.
+
+It trains nothing — it loads an existing checkpoint, so it runs in seconds. The
+weights are gitignored, so run `notebooks/milestone3_final.ipynb` once and keep
+the resulting `checkpoints_m3/best_model.pt`.
 
 ## Milestones
 

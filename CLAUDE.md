@@ -39,6 +39,10 @@ Each milestone is a self-contained bundle; the pattern is always
   `notebooks/milestone3_final.ipynb` regenerates the M2 base if absent, fine-tunes,
   evaluates on test, demos inference. Report `reports/final_report.md` + slides
   `reports/presentation.md`.
+- **Demo:** `src/visualize.py` exposes the intermediates `src/inference.py` discards
+  (preprocessing steps, STN output, the 32 time slices, per-step char probabilities,
+  CTC collapse); `notebooks/demo_video.ipynb` plots them stage by stage for the
+  lecturer's recorded demo. Loads a checkpoint only — trains nothing.
 - Each milestone has a `smoke_test*.yaml` for a 2–3 min `QUICK_TEST=True` sanity run.
 
 ## Status
